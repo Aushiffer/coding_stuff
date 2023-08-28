@@ -90,6 +90,7 @@ void printUnion(struct set s1, struct set s2) {
 		uni.size = s1.size + s2.size;
 		for (int i = 0; i < uni.size; i++)
 			uni.elements[i] = -1;
+                uni.elements[uni.size] = -1;
 		for (int i = 0; i < s1.size; i++)
 			uni.elements[i] = s1.elements[i];
 		for (int i = s1.size; i < uni.size; i++) {
@@ -107,7 +108,7 @@ void printUnion(struct set s1, struct set s2) {
 					uni.elements[i] = uni.elements[j];
 					uni.elements[j] = aux;
 				}
-		k = 0;
+                k = 0;
 		printf("imprimindo união...\n");
 		while (uni.elements[k] != -1) {
 			printf("%d ", uni.elements[k]);
