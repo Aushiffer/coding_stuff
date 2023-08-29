@@ -24,8 +24,8 @@ int main() {
                 printSet(conj1);
                 printf("imprimindo s2...\n");
                 printSet(conj2);
-                printIntersection(conj1, conj2);
+                printDifference(conj1, conj2);
         }
-
+        
         return 0;
 }
