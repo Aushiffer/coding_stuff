@@ -17,7 +17,7 @@ int size(struct set s) {
         while (s.elements[i] != -1) {
                 count++;
                 i++;
-        }
+        } // até que o elemento em s.elements[i] seja -1, count++ e i++
 
         return count;
 }
@@ -37,40 +37,42 @@ bool isIn(struct set s, int x) {
  * retornado */
 
 void printSet(struct set s) {
-        if (isEmpty(s)) {
+        if (isEmpty(s)) { // verifica se S é vazio
                 printf("conjunto vazio\n");
         } else {
                 for (int i = 0; i < s.size; i++)
                         printf("%d ", s.elements[i]);
                 printf("\n");
         }
+	/* Se S não for vazio, os elementos de s.elements[]
+	 * são impressos com um for loop */
 }
-/* Imprime os elementos de s.elements[] através de um for loop */
+/* Imprime os elementos de s.elements[] através de um loop */
 
 void sortSet(struct set s) {
-        int aux;
+        int aux; // variável auxiliar para a troca
         for (int i = 0; i < s.size; i++)
                 for (int j = i + 1; j < s.size; j++)
                         if (s.elements[i] > s.elements[j]) {
                                 aux = s.elements[i];
                                 s.elements[i] = s.elements[j];
                                 s.elements[j] = aux;
-                        }
-        printSet(s);
+                        } // fim da ordenação
+        printSet(s); // impressão de S (usando printSet), agora ordenado
 }
 /* Ordena os elementos de s.elements[] em ordem crescente. 
  * O algoritmo é similar a um selection sort */
 
 void printIntersection(struct set s1, struct set s2) {
         struct set isec;
-        int aux;
+        int aux; // var. auxiliar para a troca (ordenação decrescente)
         isec.size = MAX_SIZE;
         for (int i = 0; i < MAX_SIZE; i++)
-                isec.elements[i] = -1;
+                isec.elements[i] = -1; // inicialização de isec.elements[] com -1
         for (int i = 0; i < s1.size; i++)
                 for (int j = 0; j < s2.size; j++)
                         if (s1.elements[i] == s2.elements[j])
-                                isec.elements[i] = s1.elements[i];
+                                isec.elements[i] = s1.elements[i]; // coloca elementos coincidentes em isec.elements[]
         for (int i = 0; i < isec.size; i++)
                 for (int j = i + 1; j < isec.size; j++) {
                         if (isec.elements[i] == isec.elements[j])
@@ -80,10 +82,10 @@ void printIntersection(struct set s1, struct set s2) {
                                 isec.elements[i] = isec.elements[j];
                                 isec.elements[j] = aux;
                         }
-                }
-        isec.size = size(isec);
+                } // ordenação decrescente e -1 em duplicatas
+        isec.size = size(isec); // definição do tamanho de isec usando a função size (consequentemente remove as duplicatas)
         printf("imprimindo intersecção...\n");
-        printSet(isec);
+        printSet(isec); // impressão da intersecção usando printSet
 }
 /* Coloca os valores coincidentes entre s1 e s2 em um vetor isec.elements[]
  * de uma struct set chamada isec. Após isso, -1 é colocado em todos
@@ -96,22 +98,22 @@ void printUnion(struct set s1, struct set s2) {
 	struct setUni {
                 int size;
                 int elements[s1.size + s2.size];
-        };
+        }; // struct da união, para evitar que MAX_SIZE seja ultrapassado
 
 	if (s1.size == 0) {
-		printSet(s1);
+		printSet(s1); // se s1 é vazio, s2 também é
 	} else {
 		struct setUni uni;
 		int k, aux;
 		k = 0;
 		uni.size = s1.size + s2.size;
-                uni.elements[uni.size] = -1;
+                uni.elements[uni.size] = -1; // evitando a impressão de lixo de memória em um caso especial
 		for (int i = 0; i < s1.size; i++)
 			uni.elements[i] = s1.elements[i];
 		for (int i = s1.size; i < uni.size; i++) {
 			uni.elements[i] = s2.elements[k];
 			k++;
-		}
+		} // inserção dos elementos de ambos os conjuntos em uni.elements[]
 		for (int i = 0; i < uni.size; i++)
 			for (int j = i + 1; j < uni.size; j++) {
 				if (uni.elements[i] == uni.elements[j])
@@ -121,13 +123,15 @@ void printUnion(struct set s1, struct set s2) {
 					uni.elements[i] = uni.elements[j];
 					uni.elements[j] = aux;
 				}
-                        }
+                        } // ordenação decrescente e -1 em duplicatas
                 k = 0;
 		printf("imprimindo união...\n");
 		while (uni.elements[k] != -1) {
 			printf("%d ", uni.elements[k]);
 			k++;
-		}
+		} /* até que uni.elements[k] seja -1, uni.elements[k] é impresso e k++
+		   * impressão sem usar printSet, uma vez que size e printSet aceitam
+		   * apenas struct set */
 		printf("\n");
 	}
 } 
@@ -145,12 +149,12 @@ void printUnion(struct set s1, struct set s2) {
  * extrapolar o valor de MAX_SIZE, definido em Set.h) */
 
 void printDifference(struct set s1, struct set s2) {
-        int aux;
-        s1.elements[s1.size] = -1;
+        int aux; // var. auxiliar para troca (ordenação decrescente)
+        s1.elements[s1.size] = -1; // evitando a impressão de lixo de memória em um caso especial
         for (int i = 0; i < s2.size; i++)
                 for (int j = 0; j < s2.size; j++)
                         if (s2.elements[i] == s1.elements[j])
-                                s1.elements[j] = -1;
+                                s1.elements[j] = -1; // -1 em elementos de s2 que coincidem com elementos de s1
         for (int i = 0; i < s1.size; i++)
                 for (int j = i + 1; j < s1.size; j++) {
                         if (s1.elements[i] == s1.elements[j])
@@ -160,8 +164,10 @@ void printDifference(struct set s1, struct set s2) {
                                 s1.elements[i] = s1.elements[j];
                                 s1.elements[j] = aux;
                         }
-                }
-        s1.size = size(s1);
+                } // ordenação decrescente e -1 em duplicatas
+        s1.size = size(s1); // definição de s1.size usando size (consequentemente remove as duplicatas)
         printf("imprimindo diferença...\n");
-        printSet(s1);
+        printSet(s1); // impressão da diferença usando printSet
 }
+/* Os elementos de s1 que coincidem com s2 são removidos através de atribuições
+ * e ordenação decrescente */
