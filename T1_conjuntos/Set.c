@@ -146,6 +146,7 @@ void printUnion(struct set s1, struct set s2) {
 
 void printDifference(struct set s1, struct set s2) {
         int aux;
+        s1.elements[s1.size] = -1;
         for (int i = 0; i < s2.size; i++)
                 for (int j = 0; j < s2.size; j++)
                         if (s2.elements[i] == s1.elements[j])
