@@ -1,4 +1,5 @@
-// Nome: Caio Eduardo Ferreira de Miranda; GRR: 20232359
+/* Nome: Caio Eduardo Ferreira de Miranda; GRR: 20232359
+ * Arquivo para teste da biblioteca Set.h */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,9 +20,11 @@ int main() {
                         conj1.elements[i] = rand() % 10;
                 for (int i = 0; i < conj2.size; i++)
                         conj2.elements[i] = rand() % 10;
+                printf("imprimindo s1...\n");
                 printSet(conj1);
+                printf("imprimindo s2...\n");
                 printSet(conj2);
-		printUnion(conj1, conj2);
+                printIntersection(conj1, conj2);
         }
 
         return 0;
