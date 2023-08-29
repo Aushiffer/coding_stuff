@@ -40,7 +40,6 @@ void printSet(struct set s) {
         if (isEmpty(s)) {
                 printf("conjunto vazio\n");
         } else {
-                printf("imprimindo conjunto...\n");
                 for (int i = 0; i < s.size; i++)
                         printf("%d ", s.elements[i]);
                 printf("\n");
@@ -84,13 +83,14 @@ void printIntersection(struct set s1, struct set s2) {
                                 isec.elements[j] = aux;
                         }
         isec.size = size(isec);
+        printf("imprimindo intersecção...\n");
         printSet(isec);
 }
 /* Coloca os valores coincidentes entre s1 e s2 em um vetor isec.elements[]
  * de uma struct set chamada isec. Após isso, -1 é colocado em todos
  * os valores coincidentes em isec.elements[]. Esse vetor é ordenado
  * em ordem decrescente e isec.size é definido a partir disso com size(isec).
- * Finalmente, printSet(isec) é chamada, imprimindo a interseccção, guardada
+ * Finalmente, printSet(isec) é chamada, imprimindo a intersecção, guardada
  * em isec.elements[] */
 
 void printUnion(struct set s1, struct set s2) {
@@ -100,7 +100,8 @@ void printUnion(struct set s1, struct set s2) {
         };
 
 	if (s1.size == 0) {
-		printSet(s1);	} else {
+		printSet(s1);
+	} else {
 		struct setUni uni;
 		int k, aux;
 		k = 0;
@@ -141,4 +142,8 @@ void printUnion(struct set s1, struct set s2) {
  * final da função (isso acontece quando nenhum elemento de s1
  * é igual a algum elemento de s2). A união é feita eliminando
  * todos os elementos coincidentes em uni, uma vez que esta
- * possui todos os elementos de s1 e s2. */
+ * possui todos os elementos de s1 e s2. Essa eliminação ocorre
+ * da mesma forma que em printIntersection(struct set s1, struct set s2)
+ * porém com a impressão acontecendo sem uma função própria
+ * (a struct de uni é diferente para que não se tenha o risco de 
+ * extrapolar o valor de MAX_SIZE, definido em Set.h) */
