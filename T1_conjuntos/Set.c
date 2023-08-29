@@ -143,7 +143,7 @@ void printUnion(struct set s1, struct set s2) {
  * é igual a algum elemento de s2). A união é feita eliminando
  * todos os elementos coincidentes em uni, uma vez que esta
  * possui todos os elementos de s1 e s2. Essa eliminação ocorre
- * da mesma forma que em printIntersection(struct set s1, struct set s2)
+ * de uma forma similar a printIntersection(struct set s1, struct set s2)
  * porém com a impressão acontecendo sem uma função própria
  * (a struct de uni é diferente para que não se tenha o risco de 
  * extrapolar o valor de MAX_SIZE, definido em Set.h) */
