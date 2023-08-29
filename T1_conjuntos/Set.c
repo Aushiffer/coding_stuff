@@ -72,16 +72,15 @@ void printIntersection(struct set s1, struct set s2) {
                         if (s1.elements[i] == s2.elements[j])
                                 isec.elements[i] = s1.elements[i];
         for (int i = 0; i < isec.size; i++)
-                for (int j = i + 1; j < isec.size; j++)
+                for (int j = i + 1; j < isec.size; j++) {
                         if (isec.elements[i] == isec.elements[j])
                                 isec.elements[j] = -1;
-        for (int i = 0; i < isec.size; i++)
-                for (int j = i + 1; j < isec.size; j++)
                         if (isec.elements[i] < isec.elements[j]) {
                                 aux = isec.elements[i];
                                 isec.elements[i] = isec.elements[j];
                                 isec.elements[j] = aux;
                         }
+                }
         isec.size = size(isec);
         printf("imprimindo intersecção...\n");
         printSet(isec);
@@ -106,8 +105,6 @@ void printUnion(struct set s1, struct set s2) {
 		int k, aux;
 		k = 0;
 		uni.size = s1.size + s2.size;
-		for (int i = 0; i < uni.size; i++)
-			uni.elements[i] = -1;
                 uni.elements[uni.size] = -1;
 		for (int i = 0; i < s1.size; i++)
 			uni.elements[i] = s1.elements[i];
@@ -116,16 +113,15 @@ void printUnion(struct set s1, struct set s2) {
 			k++;
 		}
 		for (int i = 0; i < uni.size; i++)
-			for (int j = i + 1; j < uni.size; j++)
+			for (int j = i + 1; j < uni.size; j++) {
 				if (uni.elements[i] == uni.elements[j])
-					uni.elements[j] = -1;
-		for (int i = 0; i < uni.size; i++)
-			for (int j = i + 1; j < uni.size; j++)
-				if (uni.elements[i] < uni.elements[j]) {
+                                        uni.elements[j] = -1;
+                                if (uni.elements[i] < uni.elements[j]) {
 					aux = uni.elements[i];
 					uni.elements[i] = uni.elements[j];
 					uni.elements[j] = aux;
 				}
+                        }
                 k = 0;
 		printf("imprimindo união...\n");
 		while (uni.elements[k] != -1) {
@@ -143,7 +139,28 @@ void printUnion(struct set s1, struct set s2) {
  * é igual a algum elemento de s2). A união é feita eliminando
  * todos os elementos coincidentes em uni, uma vez que esta
  * possui todos os elementos de s1 e s2. Essa eliminação ocorre
- * de uma forma similar a como acontece em printIntersection(struct set s1, struct set s2)
+ * de forma similar a como acontece em printIntersection(struct set s1, struct set s2)
  * porém com a impressão acontecendo sem uma função própria
  * (a struct de uni é diferente para que não se tenha o risco de 
  * extrapolar o valor de MAX_SIZE, definido em Set.h) */
+
+void printDifference(struct set s1, struct set s2) {
+        int aux;
+        for (int i = 0; i < s2.size; i++)
+                for (int j = 0; j < s2.size; j++)
+                        if (s2.elements[i] == s1.elements[j])
+                                s1.elements[j] = -1;
+        for (int i = 0; i < s1.size; i++)
+                for (int j = i + 1; j < s1.size; j++) {
+                        if (s1.elements[i] == s1.elements[j])
+                                s1.elements[j] = -1;
+                        if (s1.elements[i] < s1.elements[j]) {
+                                aux = s1.elements[i];
+                                s1.elements[i] = s1.elements[j];
+                                s1.elements[j] = aux;
+                        }
+                }
+        s1.size = size(s1);
+        printf("imprimindo diferença...\n");
+        printSet(s1);
+}
