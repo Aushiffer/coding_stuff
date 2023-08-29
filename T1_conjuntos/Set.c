@@ -100,8 +100,7 @@ void printUnion(struct set s1, struct set s2) {
         };
 
 	if (s1.size == 0) {
-		printSet(s1);
-	} else {
+		printSet(s1);	} else {
 		struct setUni uni;
 		int k, aux;
 		k = 0;
@@ -134,4 +133,12 @@ void printUnion(struct set s1, struct set s2) {
 		}
 		printf("\n");
 	}
-}
+} 
+/* Os elementos de s1 e s2 são colocados numa struct setUni
+ * de nome uni e uni.size = s1.size + s2.size. Note que
+ * o elemento após o último elemento de uni.elements[] é -1.
+ * Isso ocorre para que lixo de memória não seja impresso no 
+ * final da função (isso acontece quando nenhum elemento de s1
+ * é igual a algum elemento de s2). A união é feita eliminando
+ * todos os elementos coincidentes em uni, uma vez que esta
+ * possui todos os elementos de s1 e s2. */
