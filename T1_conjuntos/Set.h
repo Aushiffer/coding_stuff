@@ -2,7 +2,7 @@
 
 #define MAX_SIZE 256
 
-/* estrutura do conjutno */
+/* estrutura do conjunto */
 struct set {
         int size;
         int elements[MAX_SIZE];
