@@ -7,6 +7,8 @@ bool isEmpty(struct set s) {
                 return true;
         return false;
 }
+/* Retorna true se o tamanho utilizável de s.elements[] for 0 e 
+ * false caso o contrário ocorra */
 
 int size(struct set s) {
         int count, i;
@@ -19,6 +21,10 @@ int size(struct set s) {
 
         return count;
 }
+/* Count é incrementado até que se ache um s.elements[i] tal que
+ * ele seja -1. A função funciona partindo do pressuposto de que
+ * s.elements[] sempre está em ordem decrescente e que foi
+ * inicializado com -1 em todas as suas posições */
 
 bool isIn(struct set s, int x) {
         for (int i = 0; i < s.size; i++)
@@ -26,6 +32,9 @@ bool isIn(struct set s, int x) {
                         return true;
         return false;
 }
+/* Busca linear que ocorre até que s.elements[i] seja igual a x.
+ * Se isso ocorrer, true é retornado. Caso contrário, false é
+ * retornado */
 
 void printSet(struct set s) {
         if (isEmpty(s)) {
@@ -37,6 +46,7 @@ void printSet(struct set s) {
                 printf("\n");
         }
 }
+/* Imprime os elementos de s.elements[] através de um for loop */
 
 void sortSet(struct set s) {
         int aux;
@@ -49,6 +59,8 @@ void sortSet(struct set s) {
                         }
         printSet(s);
 }
+/* Ordena os elementos de s.elements[] em ordem crescente. 
+ * O algoritmo é similar a um selection sort */
 
 void printIntersection(struct set s1, struct set s2) {
         struct set isec;
@@ -74,6 +86,12 @@ void printIntersection(struct set s1, struct set s2) {
         isec.size = size(isec);
         printSet(isec);
 }
+/* Coloca os valores coincidentes entre s1 e s2 em um vetor isec.elements[]
+ * de uma struct set chamada isec. Após isso, -1 é colocado em todos
+ * os valores coincidentes em isec.elements[]. Esse vetor é ordenado
+ * em ordem decrescente e isec.size é definido a partir disso com size(isec).
+ * Finalmente, printSet(isec) é chamada, imprimindo a interseccção, guardada
+ * em isec.elements[] */
 
 void printUnion(struct set s1, struct set s2) {
 	struct setUni {
