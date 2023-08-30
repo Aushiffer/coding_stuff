@@ -31,6 +31,18 @@ void printSet(struct set s) {
         if (isEmpty(s)) { // verifica se S é vazio
                 printf("conjunto vazio\n");
         } else {
+                int aux;
+                for (int i = 0; i < s.size; i++)
+                        for (int j = i + 1; j < s.size; j++) {
+                                if (s.elements[i] == s.elements[j])
+                                        s.elements[j] = -1;
+                                if (s.elements[i] < s.elements[j]) {
+                                        aux = s.elements[i];
+                                        s.elements[i] = s.elements[j];
+                                        s.elements[j] = aux;
+                                }
+                        }
+                s.size = size(s);
                 for (int i = 0; i < s.size; i++)
                         printf("%d ", s.elements[i]);
                 printf("\n");
@@ -39,14 +51,32 @@ void printSet(struct set s) {
 
 void sortSet(struct set s) {
         int aux; // variável auxiliar para a troca
-        for (int i = 0; i < s.size; i++)
-                for (int j = i + 1; j < s.size; j++)
-                        if (s.elements[i] > s.elements[j]) {
-                                aux = s.elements[i];
-                                s.elements[i] = s.elements[j];
-                                s.elements[j] = aux;
-                        } // fim da ordenação
-        printSet(s); // impressão de S (usando printSet), agora ordenado
+        if (isEmpty(s)) { // verifica se S é vazio
+                printf("conjunto vazio\n");
+        } else {
+                s.elements[s.size] = -1;
+                for (int i = 0; i < s.size; i++)
+                        for (int j = i + 1; j < s.size; j++) {
+                                if (s.elements[i] == s.elements[j])
+                                        s.elements[j] = -1;
+                                if (s.elements[i] < s.elements[j]) {
+                                        aux = s.elements[i];
+                                        s.elements[i] = s.elements[j];
+                                        s.elements[j] = aux;
+                                }
+                        } // -1 em duplicatas
+                s.size = size(s); // remoção de duplicatas
+                for (int i = 0; i < s.size; i++)
+                        for (int j = i + 1; j < s.size; j++)
+                                if (s.elements[i] > s.elements[j]) {
+                                        aux = s.elements[i];
+                                        s.elements[i] = s.elements[j];
+                                        s.elements[j] = aux;
+                                } // fim da ordenação 
+                for (int i = 0; i < s.size; i++)
+                        printf("%d ", s.elements[i]);
+                printf("\n");
+        }
 }
 
 void printIntersection(struct set s1, struct set s2) {
@@ -80,7 +110,7 @@ void printUnion(struct set s1, struct set s2) {
                 int elements[s1.size + s2.size];
         }; // struct da união, para evitar que MAX_SIZE seja ultrapassado
 
-        int aux;
+        int aux; // var. auxiliar para a troca
 	if (s1.size == 0) {
                 printf("imprimindo união...\n");
                 s2.elements[s2.size] = -1; // evitando a impressão de lixo de memória
@@ -94,7 +124,7 @@ void printUnion(struct set s1, struct set s2) {
                                         s2.elements[j] = aux;
                                 } // ordenação decrescente e -1 em duplicatas
                         }
-                s2.size = size(s2);
+                s2.size = size(s2); // remoção de duplicatas
 		printSet(s2); // se s1 for vazio, s2 é impresso
 	} else if (s2.size == 0) {
                 printf("imprimindo união...\n");
@@ -109,7 +139,7 @@ void printUnion(struct set s1, struct set s2) {
                                         s1.elements[j] = aux;
                                 }
                         } // ordenação decrescente e -1 em duplicatas
-                s1.size = size(s1);
+                s1.size = size(s1); // remoção de duplicatas
                 printSet(s1); // se s2 for vazio, s1 é impresso
         } else {
 		struct setUni uni;
@@ -184,7 +214,7 @@ bool isSubset(struct set s1, struct set s2) {
                                 s1.elements[j] = aux;
                         }
                 } // ordenação decrescente e -1 em duplicatas
-        s1.size = size(s1);
+        s1.size = size(s1); // definição de s1.size usando size
         if (isEmpty(s1)) // verifica se s1 - s2 é vazia (se for, s1 é subconjunto de s2)
                 return true;
         return false;
