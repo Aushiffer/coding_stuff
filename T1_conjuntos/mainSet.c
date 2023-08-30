@@ -10,7 +10,7 @@ int main() {
         struct set conj1, conj2;
         int n, m;
         scanf("%d %d", &n, &m);
-        if (n > MAX_SIZE || n < 0) {
+        if ((n > MAX_SIZE || n < 0) || (m > MAX_SIZE || m < 0)) {
                 printf("erro: tamanho inválido de conjunto\n");
         } else {
                 conj1.size = n;
@@ -30,12 +30,17 @@ int main() {
                 if (isIn(conj1, n)) {
                         printf("%d pertence a s1\n", n);
                 } else {
-                        printf("%d nao pertence a s1\n", n);
+                        printf("%d não pertence a s1\n", n);
                 }
                 if (isIn(conj2, m)) {
                         printf("%d pertence a s2\n", m);
                 } else {
-                        printf("%d nao pertence a s2\n", m);
+                        printf("%d não pertence a s2\n", m);
+                }
+                if (isSubset(conj1, conj2)) {
+                        printf("s1 é subconjunto de s2\n");
+                } else {
+                        printf("s1 não é subconjunto de s2\n");
                 }
         }
         
