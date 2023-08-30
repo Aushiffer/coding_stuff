@@ -32,7 +32,7 @@ void printSet(struct set s) {
                 printf("conjunto vazio\n");
         } else {
                 int aux;
-		s.elements[s.size] = -1;
+                s.elements[s.size] = -1; // evitando a impressão de lixo de memória em um caso especial
                 for (int i = 0; i < s.size; i++)
                         for (int j = i + 1; j < s.size; j++) {
                                 if (s.elements[i] == s.elements[j])
@@ -42,8 +42,8 @@ void printSet(struct set s) {
                                         s.elements[i] = s.elements[j];
                                         s.elements[j] = aux;
                                 }
-                        }
-                s.size = size(s);
+                        } // -1 em duplicatas e ordenação decrescente
+                s.size = size(s); // remoção de duplicatas
                 for (int i = 0; i < s.size; i++)
                         printf("%d ", s.elements[i]);
                 printf("\n");
@@ -55,7 +55,7 @@ void sortSet(struct set s) {
         if (isEmpty(s)) { // verifica se S é vazio
                 printf("conjunto vazio\n");
         } else {
-                s.elements[s.size] = -1;
+                s.elements[s.size] = -1; // evitando a impressão de lixo de memória em um caso especial
                 for (int i = 0; i < s.size; i++)
                         for (int j = i + 1; j < s.size; j++) {
                                 if (s.elements[i] == s.elements[j])
@@ -65,7 +65,7 @@ void sortSet(struct set s) {
                                         s.elements[i] = s.elements[j];
                                         s.elements[j] = aux;
                                 }
-                        } // -1 em duplicatas
+                        } // -1 em duplicatas e ordenação decrescente
                 s.size = size(s); // remoção de duplicatas
                 for (int i = 0; i < s.size; i++)
                         for (int j = i + 1; j < s.size; j++)
@@ -73,10 +73,10 @@ void sortSet(struct set s) {
                                         aux = s.elements[i];
                                         s.elements[i] = s.elements[j];
                                         s.elements[j] = aux;
-                                } // fim da ordenação 
+                                } // fim da ordenação crescente
                 for (int i = 0; i < s.size; i++)
                         printf("%d ", s.elements[i]);
-                printf("\n");
+                printf("\n"); // impressão dos elementos de S em ordem crescente
         }
 }
 
