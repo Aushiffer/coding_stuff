@@ -32,6 +32,7 @@ void printSet(struct set s) {
                 printf("conjunto vazio\n");
         } else {
                 int aux;
+		s.elements[s.size] = -1;
                 for (int i = 0; i < s.size; i++)
                         for (int j = i + 1; j < s.size; j++) {
                                 if (s.elements[i] == s.elements[j])
