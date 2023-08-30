@@ -101,6 +101,7 @@ void printUnion(struct set s1, struct set s2) {
         }; // struct da união, para evitar que MAX_SIZE seja ultrapassado
 
 	if (s1.size == 0) {
+                printf("imprimindo união...\n");
 		printSet(s1); // se s1 é vazio, s2 também é
 	} else {
 		struct setUni uni;
@@ -152,7 +153,7 @@ void printDifference(struct set s1, struct set s2) {
         int aux; // var. auxiliar para troca (ordenação decrescente)
         s1.elements[s1.size] = -1; // evitando a impressão de lixo de memória em um caso especial
         for (int i = 0; i < s2.size; i++)
-                for (int j = 0; j < s2.size; j++)
+                for (int j = 0; j < s1.size; j++)
                         if (s2.elements[i] == s1.elements[j])
                                 s1.elements[j] = -1; // -1 em elementos de s2 que coincidem com elementos de s1
         for (int i = 0; i < s1.size; i++)
@@ -171,3 +172,5 @@ void printDifference(struct set s1, struct set s2) {
 }
 /* Os elementos de s1 que coincidem com s2 são removidos através de atribuições
  * e ordenação decrescente */
+
+bool isSubset(struct set s1, struct set s2);
