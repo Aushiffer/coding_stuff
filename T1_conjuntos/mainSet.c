@@ -42,6 +42,10 @@ int main() {
                 } else {
                         printf("s1 não é subconjunto de s2\n");
                 }
+                printf("imprimindo conj1 em ordem crescente...\n");
+                sortSet(conj1);
+                printf("imprimindo conj2 em ordem crescente...\n");
+                sortSet(conj2);
         }
         
         return 0;
