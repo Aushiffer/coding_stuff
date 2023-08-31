@@ -10,7 +10,7 @@ bool isEmpty(struct set s) {
 
 int size(struct set s) {
         int count, i;
-        s.elements[s.size] = -1;
+        s.elements[s.size] = -1; // evitando a impressão de lixo de memória
         i = 0;
         count = 0;
         while (s.elements[i] != -1) {
@@ -32,19 +32,6 @@ void printSet(struct set s) {
         if (isEmpty(s)) { // verifica se S é vazio
                 printf("conjunto vazio\n");
         } else {
-                int aux;
-                s.elements[s.size] = -1; // evitando a impressão de lixo de memória em um caso especial
-                for (int i = 0; i < s.size; i++)
-                        for (int j = i + 1; j < s.size; j++) {
-                                if (s.elements[i] == s.elements[j])
-                                        s.elements[j] = -1;
-                                if (s.elements[i] < s.elements[j]) {
-                                        aux = s.elements[i];
-                                        s.elements[i] = s.elements[j];
-                                        s.elements[j] = aux;
-                                }
-                        } // -1 em duplicatas e ordenação decrescente
-                s.size = size(s); // remoção de duplicatas
                 for (int i = 0; i < s.size; i++)
                         printf("%d ", s.elements[i]);
                 printf("\n");
