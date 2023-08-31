@@ -18,15 +18,13 @@ int main() {
                 conj2.size = m;
                 srand(time(NULL));
                 for (int i = 0; i < conj1.size; i++)
-                        conj1.elements[i] = rand() % 10;
+                        conj1.elements[i] = rand() % 11;
                 for (int i = 0; i < conj2.size; i++)
-                        conj2.elements[i] = rand() % 10;
+                        conj2.elements[i] = rand() % 11;
                 printf("imprimindo s1...\n");
                 printSet(conj1);
                 printf("imprimindo s2...\n");
-                printSet(conj2); /* o tamanho de conj1 e conj2 de fato
-                                  * é n e m, mas duplicatas não foram
-                                  * consideradas, já que são conjuntos */
+                printSet(conj2);
                 printDifference(conj1, conj2);
                 printUnion(conj1, conj2);
                 printIntersection(conj1, conj2);
@@ -55,4 +53,3 @@ int main() {
         
         return 0;
 }
-
