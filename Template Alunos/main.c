@@ -16,7 +16,13 @@ int main(){
 	srand(time(NULL));
 	for (int i = 0; i < size; i++)
 		vetorTeste[i] = rand() % 50;
-	printf("%ld\n", insertionSort(vetorTeste, size));
+	for (int i = 0; i < size; i++)
+		printf("%d ", vetorTeste[i]);
+	printf("\n");
+	insertionSort(vetorTeste, size);
+	for (int i = 0; i < size; i++)
+		printf("%d ", vetorTeste[i]);
+	printf("\n");
 
 	free(vetorTeste);
 	vetorTeste = NULL;
