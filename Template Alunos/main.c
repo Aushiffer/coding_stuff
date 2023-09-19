@@ -13,16 +13,17 @@ int main(){
 	printf("GRR: %u\n", getGRR());
 	scanf("%ld", &size);
 	vetorTeste = malloc(size * sizeof(int));
+	if (vetorTeste == NULL) {
+		printf("[-] Erro fatal: erro de alocação dinâmica\n");
+		return 1;
+	}
 	srand(time(NULL));
 	for (int i = 0; i < size; i++)
 		vetorTeste[i] = rand() % 50;
-	for (int i = 0; i < size; i++)
-		printf("%d ", vetorTeste[i]);
-	printf("\n");
+	printArray(vetorTeste, size);
 	insertionSort(vetorTeste, size);
-	for (int i = 0; i < size; i++)
-		printf("%d ", vetorTeste[i]);
-	printf("\n");
+	printArray(vetorTeste, size);
+	printf("comps ins. sort: %ld\n", insertionSort(vetorTeste, size));
 
 	free(vetorTeste);
 	vetorTeste = NULL;
