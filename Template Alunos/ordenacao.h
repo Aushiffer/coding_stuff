@@ -41,6 +41,6 @@ long heapSort(int vetor[], int tam);
 
 void swap(int *a, int *b);
 
-int minValue(int vetor[], int tam);
+void printArray(int vetor[], int tam);
 
 #endif // ORDENACAO_H_
