@@ -1,6 +1,7 @@
 #include "ordenacao.h"
 
 #include <string.h>
+#include <stdio.h>
 
 void getNome(char nome[]){
 	//substitua por seu nome
@@ -42,36 +43,39 @@ void swap(int *a, int *b) {
 	*b = aux; 
 }
 
-int maxValue(int vetor[], int tam) {
-	int max = vetor[0]; // assumindo vetor[0] como max
-	for (int i = 1; i < tam; i++)
-		if (vetor[i] > max)
-			max = vetor[i]; // for loop que atualiza o valor de max conforme o if
-
-	return max; // maior elemento no vetor
+void printArray(int vetor[], int tam) {
+	for (int i = 0; i < tam; i++)
+		printf("%d ", vetor[i]);
+	printf("\n");
 }
 
 long insertionSort(int vetor[], int tam){
 	if (tam <= 1)
-		return 0; // caso base, 0 comparações
-	long comps = insertionSort(vetor, tam - 1); // recursão, guarda as comparações das demais chamadas
-		for (int i = tam - 1; i > 0; i--) {
-			if (vetor[i] < vetor[i - 1])
-				swap(&vetor[i], &vetor[i - 1]);
-			comps++;
-		}
+		return 0;
+	long comps = insertionSort(vetor, tam - 1);
+	int i = tam - 1;
+	while (i > 0 && vetor[i] < vetor[i - 1]) {
+		comps++;
+		swap(&vetor[i - 1], &vetor[i]);
+		i--;
+	}
 
 	return comps;
 }
 
 long selectionSort(int vetor[], int tam){
-	if (tam <= 1)
-		return 0; // caso base, 0 comparações
-	int posMax = maxValue(vetor, tam);
-	swap(&vetor[tam - 1], &vetor[posMax]); // troca o último elemento com o maior
-	int comps = tam;
+	if (tam <= 0)
+		return 0;
+	int posMax = tam - 1;
+	long comps = 0;
+	for (int i = 0; i < tam; i++) {
+		comps++;
+		if (vetor[i] > vetor[posMax])
+			posMax = i;
+	}
+	swap(&vetor[posMax], &vetor[tam - 1]);
 
-	return comps + selectionSort(vetor, tam - 1); // retorna o total de comparações
+	return comps + selectionSort(vetor, tam - 1);
 }
 
 long mergeSort(int vetor[], int tam){
