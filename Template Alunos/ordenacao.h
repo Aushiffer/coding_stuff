@@ -37,10 +37,4 @@ long quickSort(int vetor[], int tam);
 
 long heapSort(int vetor[], int tam);
 
-// Funções complementares adicionadas pelo aluno
-
-void swap(int *a, int *b);
-
-void printArray(int vetor[], int tam);
-
 #endif // ORDENACAO_H_
