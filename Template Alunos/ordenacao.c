@@ -1,5 +1,5 @@
 #include "ordenacao.h"
-
+#include "complementares.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -15,26 +15,17 @@ unsigned int getGRR(){
 }
 
 int buscaSequencial(int vetor[], int tam, int valor, long* numComparacoes){	
-	if (tam < 0)
+	if (tam <= 0)
 		return -1; // caso base
-	*numComparacoes = *numComparacoes + 1; // +1 comparação
-	if (valor == vetor[tam])
+	(*numComparacoes)++; // +1 comparação
+	if (valor == vetor[tam - 1])
 		return tam; // achou o valor especificado
 
 	return buscaSequencial(vetor, tam - 1, valor, numComparacoes); // chamada recursiva
 }
 
 int buscaBinaria(int vetor[], int tam, int valor, long* numComparacoes){
-	int ini = (tam - 1) + 1 - tam; // inicio do vetor
-	if (ini > tam)
-		return -1; // caso base
-	int meio = (ini + tam) / 2;
-	*numComparacoes = *numComparacoes + 1; // +1 comparação abaixo
-	if (vetor[meio] > valor)
-		return buscaBinaria(vetor, meio - 1, valor, numComparacoes);
-		// chamada recursiva para um vetor de tamanho = meio - 1
-
-	return buscaBinaria(vetor, tam, valor, numComparacoes);
+	return -1;
 }
 
 void swap(int *a, int *b) {
