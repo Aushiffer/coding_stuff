@@ -9,7 +9,7 @@ $(nomePrograma): main.o ordenacao.o
 main.o: main.c
 	gcc -c main.c $(parametrosCompilacao)
 
-ordenacao.o: ordenacao.h ordenacao.c
+ordenacao.o: ordenacao.h ordenacao.c complementares.h
 	gcc -c ordenacao.c $(parametrosCompilacao)
 
 clean:
