@@ -56,10 +56,10 @@ long insertionSort(int vetor[], int tam){
 		return 0; // caso base, 0 comparações
 	long comps = insertionSort(vetor, tam - 1); // recursão, guarda as comparações das demais chamadas
 		for (int i = tam - 1; i > 0; i--) {
-		if (vetor[i] < vetor[i - 1])
-			swap(&vetor[i], &vetor[i - 1]);
-		comps++;
-	}
+			if (vetor[i] < vetor[i - 1])
+				swap(&vetor[i], &vetor[i - 1]);
+			comps++;
+		}
 
 	return comps;
 }
