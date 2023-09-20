@@ -1,15 +1,17 @@
 #define MAX 100
 
 struct pilha {
-	int cap = MAX;
-	int itens[cap];
-	int top = 0;
+	int cap;
+	int itens[MAX];
+	int top;
 };
 
-void push(struct pilha p, int x);
+void push(struct pilha *p, int x);
 
-void pop(struct pilha p);
+void pop(struct pilha *p);
 
 int emptyStack(struct pilha p);
 
 int searchStack(struct pilha p, int x);
+
+struct pilha startPilha();
