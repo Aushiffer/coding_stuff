@@ -14,4 +14,4 @@ int emptyStack(struct pilha p);
 
 int searchStack(struct pilha p, int x);
 
-struct pilha startPilha();
+void startPilha(struct pilha *p);
