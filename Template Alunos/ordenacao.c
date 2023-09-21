@@ -2,6 +2,8 @@
 #include "complementares.h"
 #include <string.h>
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 void getNome(char nome[]){
 	//substitua por seu nome
@@ -40,8 +42,14 @@ void printArray(int vetor[], int tam) {
 	printf("\n");
 }
 
+void putRandomNumbersOnArray(int vetor[], int tam) {
+	srand(time(NULL));
+	for (int i = 0; i < tam; i++)
+		vetor[i] = rand() % 11;
+}
+
 long insertionSort(int vetor[], int tam){
-	if (tam <= 1)
+	if (tam <= 0)
 		return 0;
 	long comps = insertionSort(vetor, tam - 1);
 	int i = tam - 1;
