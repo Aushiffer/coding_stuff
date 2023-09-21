@@ -49,7 +49,7 @@ int countItensQueue(struct fila f) {
 	int count = 0;
 	if (queueEmpty(f) == 1)
 		return count;
-	for (int i = f.first; i < f.last; i++)
+	for (int i = f.first; i <= f.last; i++)
 		count++;
 
 	return count;
