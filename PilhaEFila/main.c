@@ -4,13 +4,11 @@
 
 int main() {
 	struct pilha p;
-	p.top = 0;
-	p.itens[p.top] = -1;
-	p.cap = MAX;
+	createStack(&p);
 	push(&p, 10);
+	push(&p, 20);
 	pop(&p);
-	pop(&p);
-	printf("%d %d\n", p.itens[p.top], p.top);
+	printf("item (topo) e topo da pilha: %d %d\n", p.itens[p.top], p.top);
 
 	return 0;	
 }
