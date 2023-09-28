@@ -14,6 +14,7 @@ int main() {
 	getNome(nome);
 	printf("Nome: %s\n", nome);
 	printf("GRR: %u\n", getGRR());
+	printf("Entre com o tamanho do vetor a ser testado pelo(s) algoritmo(s): ");
 	scanf("%ld", &size);
 
 	if (!(numComps = malloc(sizeof(long)))) {
