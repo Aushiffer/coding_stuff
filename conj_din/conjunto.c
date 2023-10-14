@@ -53,8 +53,6 @@ bool pertenceConj(struct conjunto *c, int x) {
 void insereConj(struct conjunto *c, int x) {
 	if (pertenceConj(c, x))
 		return; // preservação da unicidade do conjunto
-	if (c -> tam == c -> maxTam)
-		return; // evitando overflow
 	c -> elementos[tamConj(c)] = x; // x vai p/ última pos. do conjunto
 	(c -> tam)++;
 	(c -> maxTam)++; // decr. os tamanhos
