@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>ULA.dig</elementName>
+      <elementAttributes/>
+      <pos x="680" y="400"/>
+    </visualElement>
+    <visualElement>
+      <elementName>REG_BANK.dig</elementName>
+      <elementAttributes/>
+      <pos x="520" y="360"/>
+    </visualElement>
+  </visualElements>
+  <wires/>
+  <measurementOrdering/>
+</circuit>
