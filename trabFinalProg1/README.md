@@ -2,7 +2,7 @@
 - Último trabalho proposto na disciplina de Programação 1 no curso de Bacharelado em Ciência da Computação da UFPR - Profº André R. Abed Grégio
 - Aluno: Caio E. F. de Miranda - caio.miranda@ufpr.br
 
-# Ferramentas usadasa
+# Ferramentas usadas
 - C;
 - GCC;
 - GDB;
