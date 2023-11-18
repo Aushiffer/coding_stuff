@@ -1,3 +1,5 @@
+// Programa feito por Caio E. F. de Miranda - caio.miranda@ufpr.br
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
