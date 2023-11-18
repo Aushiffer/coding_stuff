@@ -1,4 +1,4 @@
-// Programa feito por Caio E. F. de Miranda - caio.miranda@ufpr.br
+// Programa feito por Caio E. F. de Miranda - caio.miranda@ufpr.br (GRR20232359)
 
 #include <stdio.h>
 #include <stdlib.h>
