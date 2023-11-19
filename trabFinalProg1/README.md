@@ -17,7 +17,7 @@
 - Duas listas circulares duplamente encadeadas - uma com os pretendentes e uma com os concorrentes (pretendentes que podem realizar um 'match').
 
 # Funcionamento do programa
-- São colocados candidatos na pilha de candidatos e pretendentes na lista de pretendentes. Todas as pessoas são representadas pela mesma 'struct pessoa';
+- São colocados 'n' candidatos na pilha de candidatos e 'm' pretendentes na lista de pretendentes ('n' e 'm' são obtidos por scanf). Todas as pessoas são representadas pela mesma 'struct pessoa';
 - São exibidos os atributos que os candidatos querem e os atributos que os pretendentes têm;
 - (I) O candidato é desempilhado da pilha de pretendentes, e seus atributos são salvos;
 - Inicia-se o pareamento entre o candidato atual e os pretendentes:
