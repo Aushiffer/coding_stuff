@@ -19,7 +19,7 @@ node_t *new_node() {
 	tmp->prev = NULL;
 
 	for (int i = 0; i < ATR_NUM; i++)
-		tmp->atr[i] = rand() % 31;
+		tmp->atr[i] = rand() % 2;
 
 	tmp->name = (char *)malloc(CHAR_PTR_CAP * sizeof(char));
 	
