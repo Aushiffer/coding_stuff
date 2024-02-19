@@ -76,7 +76,7 @@ int main() {
 			insert_node(prt_l, n);
 		}
 	} else {
-		printf("Invalid input. Nothing were allocated nor freed from the memory.\n\n");
+		printf("Invalid input. Nothing was allocated nor freed from the memory.\n\n");
 	}
 
 	pairing(st, conc_l, prt_l, &match, &mismatch, &no_pair);
