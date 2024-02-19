@@ -290,7 +290,7 @@ void pairing(stack_t *cnd_s, dl_list *conc_l, dl_list *prt_l, int *match, int *m
 		}
 
 		if (size_list(conc_l) > 1) {
-			printf("\nThere is more than one pretendent compatible with the candidate %s. Initiating dispute...\n\n", cnd_aux->name);
+			printf("\nThere is more than one pretendent compatible with the candidate %s. Initializing dispute...\n\n", cnd_aux->name);
 			int p, min_relevance;
 			p = size_list(conc_l);
 			aux = conc_l->head;
