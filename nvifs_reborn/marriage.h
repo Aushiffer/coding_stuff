@@ -13,13 +13,13 @@ typedef struct Node {
 } node_t;
 
 // Pilha
-typedef struct stack_t {
+typedef struct Stack {
 	node_t *top;
 	int size;
 } stack_t;
 
 // Lista duplamente encadeada
-typedef struct dl_list {
+typedef struct DL_List {
 	node_t *tail;
 	node_t *head;
 	int size;
