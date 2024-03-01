@@ -6,7 +6,7 @@ noticia *cria_noticia() {
 	noticia *tmp = (noticia *)malloc(sizeof(noticia));
 
 	if (!tmp) {
-		fprintf(stderr, "[-] Erro na alocação em cria_noticia()\n");
+		fprintf(stderr, "[-] Falha na alocação em cria_noticia()\n");
 
 		return NULL;
 	}
