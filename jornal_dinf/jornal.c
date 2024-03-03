@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "jornal.h"
 
 noticia *cria_noticia() {
