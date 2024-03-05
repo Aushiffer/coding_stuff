@@ -53,6 +53,8 @@ void seleciona_noticias(fila *f, int *n_noticias) {
 			} else if (!noticia_valida(aux)) {
 				if (aux->prox != NULL)
 					aux = aux->prox;
+
+				remove_fila(f);
 			}
 
 			count++;
