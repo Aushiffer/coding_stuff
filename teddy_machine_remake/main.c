@@ -17,7 +17,7 @@ int main() {
 		printf("\n============================ ROUND %u ============================\n", r + 1);
 		print_attempt(aux, machine_attempt);
 
-		if (machine_attempt >= aux->probability)
+		if (machine_attempt <= aux->probability)
 			list = remove_machine(list, aux);
 		else
 			aux->probability = aux->probability + 2;
