@@ -164,8 +164,11 @@ bool is_palindrome(char *word) {
 		insert_tail(d, word[i]);
 
 	for (unsigned int j = 0; j < (strlen(word) / 2); j++) {
-		if (remove_head(d) != remove_tail(d))
+		if (remove_head(d) != remove_tail(d)) {
+			free_deque(d);
+			
 			return !return_var;
+		}
 	}
 
 	free_deque(d);
