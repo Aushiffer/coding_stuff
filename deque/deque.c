@@ -168,5 +168,7 @@ bool is_palindrome(char *word) {
 			return !return_var;
 	}
 
+	free_deque(d);
+
 	return return_var;
 }
