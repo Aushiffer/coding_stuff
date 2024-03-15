@@ -14,6 +14,10 @@ int main() {
 		machine_place = get_place(n_machines);
 		machine_attempt = get_attempt();
 		aux = select_machine(list, machine_place);
+
+		if (!aux)
+			break;
+		
 		printf("\n============================ ROUND %u ============================\n", r + 1);
 		print_attempt(aux, machine_attempt);
 
