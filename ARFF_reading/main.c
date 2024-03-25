@@ -125,7 +125,7 @@ atributo *processa_atributos(FILE *arff) {
 				atr[i].categorias = strdup(token);
 			} else {
 				atr[i].tipo = strdup(token);
-				atr[i].categorias = strdup("(null)");
+				atr[i].categorias = NULL;
 			}
 
 			i++;
